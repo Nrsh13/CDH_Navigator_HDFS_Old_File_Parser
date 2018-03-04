@@ -1,0 +1,27 @@
+## Navigator Configuration
+navconf:
+    host: apache-hadoop.abc.com
+    port: 7187
+    user: nrsh13
+    password: password@123
+
+## Database Configuration
+dbconf:
+    hive:
+         db: default
+         table: mytest
+
+## Enter HDFS Paths like (- /user/nrsh13) in inpaths
+## All these paths will be picked as List and Processed One by one
+taskconf:
+    inpaths:
+         - /user/nrsh13
+         - /user/spark
+
+## Files never accessed in last N(eq. 90) days
+numdays:
+    days: 90
+
+hiveconf:
+    warehouse: /user/hive/warehouse
+
