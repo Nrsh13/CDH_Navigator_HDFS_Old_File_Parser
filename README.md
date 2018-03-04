@@ -45,6 +45,7 @@ c61a5e45751de5fd47ace408f8a7e8a0ce5b7277
 2) Prepare the conf/properties.yml having
 
       Navigator Host, Navigator Port, Username, Password, HDFS Paths to be Processed, Hive Database and Table Names, Number of Days
+3) Write permissions for the user (running this Program) on Hive Database used in conf/properties.yml
 
 ## Usage
 ```
