@@ -1,14 +1,13 @@
 # CDH_Navigator_HDFS_Old_File_Parser
-Cloudera Navigator amazingly holds every possible information about your CDH Cluster. This repo uses Navigator to generate a list of Files which were never accessed in last N number of Days.
+Cloudera Navigator amazingly holds every possible information about your CDH Cluster. 
 
-# Dependencies
+This Program reads the conf/properties.yml, get the required details, use these details to find all files which were never accessed in last N days. Finally stores the results in a Hive Table.
+
+## Dependencies
 CDH 5.10 or Higher
 Spark 2.0 or Higher
 
-# Prerequisites
-For a Kerberized Cluster, make sure you have valid Kerberos ticket before you run this Program.
-
-# Installation
+## Installation
 Clone the repo:
 ```
 export https_proxy=https://yourproxy:10568 # if any
@@ -40,7 +39,18 @@ c61a5e45751de5fd47ace408f8a7e8a0ce5b7277
   inflating: CDH_Navigator_HDFS_Old_File_Parser-master/src/navigator_hdfs_old_file_parser.py
 ```
 
-# Usage
+## Prerequisites
+1) For a Kerberized Cluster, make sure you have valid Kerberos ticket before you run this Program.
+2) Prepare the conf/properties.yml having
+      Navigator Host
+      Navigator Port
+      Username
+      Password
+      HDFS Paths to be Processed
+      Hive Database and Table Names
+      Number of Days
+
+## Usage
 ```
 [nrsh13@apache-hadoop]$ sh CDH_Navigator_HDFS_Old_File_Parser-master/bin/trigger_navigator_hdfs_old_file_parser.sh -h
 
@@ -56,7 +66,7 @@ Example:
         sh /tmp/test/CDH_Navigator_HDFS_Old_File_Parser-master/bin/trigger_navigator_hdfs_old_file_parser.sh
 ```
 
-# Example
+## Example
 ```
 [nrsh13@apache-hadoop]$ sh CDH_Navigator_HDFS_Old_File_Parser-master/bin/trigger_navigator_hdfs_old_file_parser.sh
  PROJECT:        Navigator Files Parser
@@ -64,8 +74,18 @@ Example:
  CREATED:        15th Feb, 2018
  PURPOSE:        Get the Files which were Never accessed in last N Days
 
-Job Triggered. Check latest log file at /tmp/test/CDH_Navigator_HDFS_Old_File_Parser-master/logs
+Job Triggered. Check latest log file at /home/nrsh13/CDH_Navigator_HDFS_Old_File_Parser-master/logs
 ```
 
-# Contact
+## Sample logs
+```
+2018-03-04 22:14:56,549 NAVIGATOR-PARSER INFO  Creating the Table default.mytest if NOT EXISTS
+2018-03-04 22:14:58,068 NAVIGATOR-PARSER INFO  INSERT INTO TABLE Table Command Prepared:
+2018-03-04 22:14:58,068 NAVIGATOR-PARSER INFO  INSERT INTO TABLE default.mytest SELECT owner,parentPath,originalName,created,lastModified,lastAccessed,size,sourceType,permissions,group,identity FROM mytable
+2018-03-04 22:14:58,069 NAVIGATOR-PARSER INFO  Inserting the Data in default.mytest Table
+2018-03-04 22:14:58,838 NAVIGATOR-PARSER INFO  45 Records Inserted successfully in default.mytest
+2018-03-04 22:14:58,839 NAVIGATOR-PARSER INFO  Data Processed Successfully !!
+```
+
+## Contact
 nrsh13@gmail.com
