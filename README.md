@@ -1,7 +1,7 @@
 # CDH_Navigator_HDFS_Old_File_Parser
-Cloudera Navigator amazingly holds every possible information about your CDH Cluster. 
+Cloudera Navigator amazingly holds every possible information about your CDH Cluster. HDFS Storage utilization can continuously go high with time and can arise a need of OLD/Unused files Cleanup.
 
-This Program reads the conf/properties.yml, get the required details, use these details to find all files which were never accessed in last N days. Finally stores the results in a Hive Table.
+This Program reads the conf/properties.yml, get the required details, use these details to find all files which were never accessed in last N days. Finally stores the results in a Hive Table for further actions.
 
 ## Dependencies
 CDH 5.10 or Higher
