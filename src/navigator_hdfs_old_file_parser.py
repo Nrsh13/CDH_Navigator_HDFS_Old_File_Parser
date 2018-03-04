@@ -180,7 +180,7 @@ def process_data(database,table):
 
 		logger('INFO',"Create Table Command Prepared:")
 
-		cmd = "CREATE EXTERNAL TABLE IF NOT EXISTS %s.%s (owner STRING,parentPath STRING,originalName STRING,created timestamp,lastModified timestamp,lastAccessed timestamp,size BIGINT,sourceType STRING,permissions STRING,group STRING,identity BIGINT)STORED AS PARQUET LOCATION  '/z0/tech/%s'" %(database,table,table)
+		cmd = "CREATE EXTERNAL TABLE IF NOT EXISTS %s.%s (owner STRING,parentPath STRING,originalName STRING,created timestamp,lastModified timestamp,lastAccessed timestamp,size BIGINT,sourceType STRING,permissions STRING,group STRING,identity BIGINT)STORED AS PARQUET LOCATION  '/tmp/%s'" %(database,table,table)
 
 		logger('INFO',cmd)
 	
