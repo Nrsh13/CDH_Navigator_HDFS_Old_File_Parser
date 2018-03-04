@@ -5,6 +5,7 @@ This Program reads the conf/properties.yml, get the required details, use these 
 
 ## Dependencies
 CDH 5.10 or Higher
+
 Spark 2.0 or Higher
 
 ## Installation
@@ -42,13 +43,8 @@ c61a5e45751de5fd47ace408f8a7e8a0ce5b7277
 ## Prerequisites
 1) For a Kerberized Cluster, make sure you have valid Kerberos ticket before you run this Program.
 2) Prepare the conf/properties.yml having
-      Navigator Host
-      Navigator Port
-      Username
-      Password
-      HDFS Paths to be Processed
-      Hive Database and Table Names
-      Number of Days
+
+      Navigator Host, Navigator Port, Username, Password, HDFS Paths to be Processed, Hive Database and Table Names, Number of Days
 
 ## Usage
 ```
