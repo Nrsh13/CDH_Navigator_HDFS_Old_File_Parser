@@ -3,7 +3,7 @@ This Program will read the conf/properties.yml, get the required details, use th
 
 Project: Navigator HDFS Old File Parser
 Purpose: To Create a Hive table for all HDFS files which were never accessed in last N number of Days.
-Date: 01-Mar-2018
+Date: 15-Feb-2018
 
 Inputs: Takes from properties.yml
 - hostport: Navigator Host and Port
@@ -180,7 +180,7 @@ def process_data(database,table):
 
 		logger('INFO',"Create Table Command Prepared:")
 
-		cmd = "CREATE EXTERNAL TABLE IF NOT EXISTS %s.%s (owner STRING,parentPath STRING,originalName STRING,created timestamp,lastModified timestamp,lastAccessed timestamp,size BIGINT,sourceType STRING,permissions STRING,group STRING,identity BIGINT)STORED AS PARQUET LOCATION  '/tmp/%s'" %(database,table,table)
+		cmd = "CREATE TABLE IF NOT EXISTS %s.%s (owner STRING,parentPath STRING,originalName STRING,created timestamp,lastModified timestamp,lastAccessed timestamp,size BIGINT,sourceType STRING,permissions STRING,group STRING,identity BIGINT)STORED AS PARQUET" %(database,table)
 
 		logger('INFO',cmd)
 	
