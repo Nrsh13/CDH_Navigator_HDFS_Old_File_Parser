@@ -52,7 +52,7 @@ fi
 
 ## Trigger the Main Python Code
 cd $SRCPATH
-(spark2-submit navigator_hdfs_old_file_parser.py & > /dev/null 2>&1 &)
+(spark2-submit navigator_hdfs_old_file_parser.py > /dev/null 2>&1 &)
 job_status="$?"
 
 if [ "$job_status" == "0" ]
