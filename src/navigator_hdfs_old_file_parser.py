@@ -164,6 +164,8 @@ def process_data(data_path, database,table):
         try:
                 logger('INFO',"LOADING the Data in Spark for Processing ")
 
+                logger('INFO',"In case of java.lang.OutOfMemoryError Tune Parameters in line 55 in bin/trigger_navigator_hdfs_old_file_parser.sh")
+
                 df = myspark.read.format("json").options(inferSchema=True,dateFormat="yyyy-MM-dd", timestampFormat="yyyy-MM-dd'T'HH:mm:ss.SSSZZ", ignoreLeadingWhiteSpace=True,ignoreTrailingWhiteSpace=True, path="/tmp/tempfiles/").load()
 
                 logger('INFO',"Changing the Data Type to Timestamp for few Columns")
@@ -252,7 +254,7 @@ if __name__ == '__main__':
 
                         logger('INFO',"Creating Spark Session 'myspark'")
 
-                        myspark = SparkSession.builder.master("yarn").appName("Old_File_Listing").enableHiveSupport().getOrCreate()
+                        myspark = SparkSession.builder.master("yarn").appName("Navigator_HDFS_File_Parser").enableHiveSupport().getOrCreate()
 
                         logger('INFO',"Spark Session Created successfully")
 
