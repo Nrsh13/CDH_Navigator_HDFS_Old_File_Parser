@@ -35,3 +35,4 @@ sparkconf:
         spark.yarn.driver.memoryOverhead: 500m
         spark.serializer: org.apache.spark.serializer.KryoSerializer
         spark.yarn.driver.memoryOverhead: 500m
+        spark.sql.shuffle.partitions: 10
