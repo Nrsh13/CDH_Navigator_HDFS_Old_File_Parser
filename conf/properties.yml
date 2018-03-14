@@ -25,3 +25,13 @@ numdays:
 hiveconf:
     warehouse: /user/hive/warehouse
 
+## Pass the Spark Configurations you want to set depending upon your Cluster settings and available resources
+sparkconf:
+        master: yarn
+        spark.executor.instances: 10
+        spark.executor.memory: 4g
+        spark.executor.cores: 2
+        spark.driver.memory:  4g
+        spark.yarn.driver.memoryOverhead: 500m
+        spark.serializer: org.apache.spark.serializer.KryoSerializer
+        spark.yarn.driver.memoryOverhead: 500m
