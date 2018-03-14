@@ -164,7 +164,7 @@ def process_data(data_path, database,table):
         try:
                 logger('INFO',"LOADING the Data in Spark for Processing ")
 
-                logger('INFO',"In case of java.lang.OutOfMemoryError Tune Parameters in line 55 in bin/trigger_navigator_hdfs_old_file_parser.sh")
+                logger('INFO',"In case of java.lang.OutOfMemoryError Tune Spark Parameters in conf/proprties.yml")
 
                 df = myspark.read.format("json").options(inferSchema=True,dateFormat="yyyy-MM-dd", timestampFormat="yyyy-MM-dd'T'HH:mm:ss.SSSZZ", ignoreLeadingWhiteSpace=True,ignoreTrailingWhiteSpace=True, path="/tmp/tempfiles/").load()
 
@@ -235,6 +235,14 @@ if __name__ == '__main__':
         days = doc['numdays']['days']
         pathlist = doc['taskconf']['inpaths']
 
+        # Reading Spark Conf Parameters
+        from pyspark import SparkConf
+        mylist = []
+        for i in doc['sparkconf']:
+                item = i,doc['sparkconf'][i]
+                mylist.append(item)
+        conf = SparkConf().setAll(mylist)
+
         ## Setting up the Logger
         loggername = 'NAVIGATOR-PARSER'
         logger = LogAdmin(loggername, logfile).setLog
@@ -254,7 +262,7 @@ if __name__ == '__main__':
 
                         logger('INFO',"Creating Spark Session 'myspark'")
 
-                        myspark = SparkSession.builder.master("yarn").appName("Navigator_HDFS_File_Parser").enableHiveSupport().getOrCreate()
+                        myspark = SparkSession.builder.master("yarn").appName("Navigator_HDFS_File_Parser").config(conf=conf).enableHiveSupport().getOrCreate()
 
                         logger('INFO',"Spark Session Created successfully")
 
