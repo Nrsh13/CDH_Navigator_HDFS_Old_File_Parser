@@ -41,6 +41,8 @@ Example:
 ```
 
 ## Example
+Update the conf/properties.yml file as per your CDH Cluster details.
+Then Run:
 ```
 [nrsh13@apache-hadoop]$ sh CDH_Navigator_HDFS_Old_File_Parser/bin/trigger_navigator_hdfs_old_file_parser.sh
  PROJECT:        Navigator Files Parser
